@@ -126,30 +126,21 @@
 		</div>
 	</div>
 	<hr>
-<!-- Kategorie anlegen/löschen verwaltung -->
+<!-- Kategorieverwaltung -->
 	<div class="row">
 		<div class="container text-center">
+			<h2>Kategorieverwaltung</h2>
+			<div class="spacer"></div>
+			<h3 class="col-xs-12"> Kategorie einfügen</h1>
+			
 			<div class="col-xs-12">
-				<h2>Kategorie erstellen</h2>
-			</div>
-			<div class="col-xs-12 col-sm-6">
-				<h3>Oberkategorie wählen</h3>
-
-				<div class="col-xs-12">
-					<form ACTION="oberkategorie_hinzufuegen.jsp" METHOD="post">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<input type="text" class="form-control" id="uk" name="oberkat">
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-success col-xs-12"> Hinzufügen</button>
-						</div>
-					</form>
-				</div>
-				<div class="col-xs-12">
-					<form ACTION="oberkategorie_delete.jsp" METHOD="post">
-						<div class="col-xs-6">
+				<form ACTION="" METHOD="">	
+					<div class="col-xs-12 col-sm-4">
+						<label>Name der neuen Kategorie:</label>
+						<input type="text" class="form-control" id="uk" name="oberkat">
+					</div>
+					<div class="col-xs-12 col-sm-4">
+							<label>Unterkategorie wählen: </label>
 							<div class="form-group">
 							  <select class="form-control" id="sel1" name="oberkat_options">
 							  <%
@@ -163,57 +154,40 @@
 							   <%} %>
 							  </select>
 							</div>
-						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-danger col-xs-12"> Löschen</button>
-						</div>
-					</form>
-				</div>
-
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<label style="color:#fff;">Hinzufügen</label>
+						<button class="btn btn-success col-xs-12"> Hinzufügen</button>
+					</div>
+				</form>
 			</div>
 
-			<div class="col-xs-12 col-sm-6">
-				<h3>Unterkategorie wählen</h3>
-				<div class="col-xs-12">
-					<form ACTION="unterkategorie_hinzufuegen.jsp" METHOD="post">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<input type="text" class="form-control" id="uk" name="unterkat">
-							</div>
+			<div class="col-xs-12">
+				<div class="spacer"></div>
+				<h3 class="col-xs-12"> Kategorie löschen</h1>
+				<form ACTION="oberkategorie_delete.jsp" METHOD="post">
+					<div class="col-xs-6">
+						<div class="form-group">
+						  <select class="form-control" id="sel1" name="oberkat_options">
+						  <%
+						  	ConnectionDB con2 = new ConnectionDB();
+							List<String> oberkategorie = new LinkedList<String>();
+							oberkategorie = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
+							for(String ok : oberkategorie)
+							{
+						  %>
+						     <option><%= ok %></option>
+						   <%} %>
+						  </select>
 						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-success col-xs-12"> Hinzufügen</button>
-						</div>
-					</form>
-				</div>
-				<div class="col-xs-12">
-					<form ACTION="unterkategorie_delete.jsp" METHOD="post">
-						<div class="col-xs-6">
-							<div class="form-group">
-							  <select class="form-control" id="sel1" name="unterkat_options">
-							  <%
-							  	
-								List<String> unterkategorien_add = new LinkedList<String>();
-								unterkategorien_add = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
-								for(String uk : unterkategorien_add)
-								{
-							  %>
-							     <option><%= uk %></option>
-							   <%} %>
-							  </select>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-danger col-xs-12"> Löschen</button>
-						</div>
-					</form>
-				</div>
+					</div>
+					<div class="col-xs-6">
+						<button class="btn btn-danger col-xs-12"> Löschen</button>
+					</div>
+				</form>
 			</div>
-
 		</div>
 	</div>
-	<div class="spacer"></div>
-	
 	<hr>
 
 	<!-- Eintrag löschen -->
