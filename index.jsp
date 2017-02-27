@@ -74,7 +74,7 @@ img{
 		<div class="container text-center">
 			<h1>SozialraumApp</h1>
 		<div>
-		<%
+		<!--%
 		ConnectionDB conn = new ConnectionDB();
 		List<String> kategorien = new LinkedList<String>();
 		kategorien = conn.data("SELECT * FROM sozialraum_db.oberkategorien;","oberkategorie");
@@ -84,6 +84,26 @@ img{
 		//schleife um die Einträge aus der Datenbank zu holen und die Bilder zu bezeichnen
 		%>
 		
+		<div class="col-xs-12 col-sm-4">
+			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
+			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
+			<p><a href="#"><%= oberkategorie%></a></p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
+			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
+			<p><a href="#"><%= oberkategorie%></a></p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
+			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
+			<p><a href="#"><%= oberkategorie%></a></p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
+			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
+			<p><a href="#"><%= oberkategorie%></a></p>
+		</div>
 		<div class="col-xs-12 col-sm-4">
 			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
 			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->

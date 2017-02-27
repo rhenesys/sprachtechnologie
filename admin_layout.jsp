@@ -92,29 +92,8 @@
 						<textarea class="form-control" maxlength="700" rows="5" id="beschreibung"></textarea>
 					</div>
 					<div class="spacer col-xs-12"></div>
-					<div class="col-xs-12 col-sm-6">
-						<form ACTION="" METHOD="post">
-							<div class="col-xs-6">
-								<span class="col-xs-12"> Einfügen in:</span>
-							</div>
-							<div class="col-xs-6">
-								<div class="form-group">
-									<select class="form-control" id="sel1" name="options">
-								<%
-									ConnectionDB con = new ConnectionDB();
-									List<String> oberkategorien = new LinkedList<String>();
-									oberkategorien = con.data("SELECT * FROM sozialraum_db.oberkategorien;","oberkategorie");
-									for(String ok : oberkategorien)
-									{
-								%>
-									<option><%= ok %></option>
-								<%} %>
-								</select>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="col-xs-12 col-sm-6">
+					
+					<div class="col-xs-12">
 						<form ACTION="" METHOD="post">
 							<div class="col-xs-6">
 								<span class="col-xs-12"> Einfügen in:</span>
@@ -155,20 +134,32 @@
 			</div>
 			<div class="col-xs-12 col-sm-6">
 				<h3>Oberkategorie wählen</h3>
-				
+
+				<div class="col-xs-12">
+					<form ACTION="oberkategorie_hinzufuegen.jsp" METHOD="post">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="uk" name="oberkat">
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-success col-xs-12"> Hinzufügen</button>
+						</div>
+					</form>
+				</div>
 				<div class="col-xs-12">
 					<form ACTION="oberkategorie_delete.jsp" METHOD="post">
 						<div class="col-xs-6">
 							<div class="form-group">
-							  <select class="form-control" id="sel1" name="options">
+							  <select class="form-control" id="sel1" name="oberkat_options">
 							  <%
-							  	ConnectionDB con = new ConnectionDB();
-								List<String> oberkategorien = new LinkedList<String>();
-								oberkategorien = con.data("SELECT * FROM sozialraum_db.oberkategorien;","oberkategorie");
-								for(String ok : oberkategorien)
+							  	ConnectionDB con2 = new ConnectionDB();
+								List<String> oberkategorie = new LinkedList<String>();
+								oberkategorie = con.data("SELECT * FROM sozialraum_db.oberkategorie;","oberkategorien");
+								for(String uk : oberkategorie)
 								{
 							  %>
-							    <option><%= ok %></option>
+							     <option><%= uk %></option>
 							   <%} %>
 							  </select>
 							</div>
@@ -178,28 +169,30 @@
 						</div>
 					</form>
 				</div>
-				
+
+			</div>
+
+			<div class="col-xs-12 col-sm-6">
+				<h3>Unterkategorie wählen</h3>
 				<div class="col-xs-12">
-					<form ACTION="oberkategorie_hinzufuegen.jsp" METHOD="post">
+					<form ACTION="unterkategorie_hinzufuegen.jsp" METHOD="post">
 						<div class="col-xs-6">
-							<input type="text" class="form-control" id="ok" name="oberkat">
+							<div class="form-group">
+								<input type="text" class="form-control" id="uk" name="unterkat">
+							</div>
 						</div>
 						<div class="col-xs-6">
 							<button class="btn btn-success col-xs-12"> Hinzufügen</button>
 						</div>
 					</form>
 				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-6">
-				<h3>Unterkategorie wählen</h3>
 				<div class="col-xs-12">
 					<form ACTION="unterkategorie_delete.jsp" METHOD="post">
 						<div class="col-xs-6">
 							<div class="form-group">
 							  <select class="form-control" id="sel1" name="unterkat_options">
 							  <%
-							  	ConnectionDB con2 = new ConnectionDB();
+							  	
 								List<String> unterkategorien = new LinkedList<String>();
 								unterkategorien = con.data("SELECT * FROM sozialraum_db.unterkategorien;","unterkategorie");
 								for(String uk : unterkategorien)
@@ -215,20 +208,6 @@
 						</div>
 					</form>
 				</div>
-				
-				<div class="col-xs-12">
-					<form ACTION="unterkategorie_hinzufuegen.jsp" METHOD="post">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<input type="text" class="form-control" id="uk" name="unterkat">
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-success col-xs-12"> Hinzufügen</button>
-						</div>
-					</form>
-				</div>
-
 			</div>
 
 		</div>
@@ -277,7 +256,7 @@
 							<label for="unterkat_options"> und ggf. Unterkategorie:</label>
 							<select class="form-control" id="sel1" name="unterkat_options">
 								<%
-								ConnectionDB con2 = new ConnectionDB();
+								
 								List<String> unterkategorien = new LinkedList<String>();
 								unterkategorien = con.data("SELECT * FROM sozialraum_db.unterkategorien;","unterkategorie");
 								for(String uk : unterkategorien)
@@ -307,15 +286,15 @@
 						<div class="spacer"></div>
 						<%
 		
-						String traegername = /*mySQL anfrage zu */;
-						int plz = /*mySQL anfrage zu */;
-						String straßeNr = /*mySQL anfrage zu */;
-						String telefon = /*mySQL anfrage zu */;
-						String fax = /*mySQL anfrage zu */;
-						String ansprechpartner = /*mySQL anfrage zu */;
-						String mailadresse = /*mySQL anfrage zu */;
-						String website= /*mySQL anfrage zu */;
-						String angebot= /*mySQL anfrage zu */;
+						String traegername = "/*mySQL anfrage zu */";
+						int plz = 12345;
+						String straßeNr = "/*mySQL anfrage zu */";
+						String telefon = "/*mySQL anfrage zu */";
+						String fax = "/*mySQL anfrage zu */";
+						String ansprechpartner = "/*mySQL anfrage zu */";
+						String mailadresse = "/*mySQL anfrage zu */";
+						String website= "/*mySQL anfrage zu */";
+						String angebot= "/*mySQL anfrage zu */";
 
 						while (cond){
 						//schleife um die Einträge aus der Datenbank zu holen 
