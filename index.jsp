@@ -17,6 +17,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +65,7 @@ img{
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Sozialraum</a></li>
         <li><a href="#">Angebote</a></li>
-        <li><a href="admin_layout.jsp">Admin</a></li>
+        <li><a href="admin.jsp">Admin</a></li>
       	<li><a href="impressum.html">Impressum</a></li>
       </ul>
     </div>
@@ -74,43 +76,26 @@ img{
 		<div class="container text-center">
 			<h1>SozialraumApp</h1>
 		<div>
-		<!--%
-		ConnectionDB conn = new ConnectionDB();
-		List<String> kategorien = new LinkedList<String>();
-		kategorien = conn.data("SELECT * FROM sozialraum_db.oberkategorien;","oberkategorie");
-		//String pic = /*mySQL anfrage zu Bild*/
-		for(String oberkategorie : kategorien)
-		{
-		//schleife um die Einträge aus der Datenbank zu holen und die Bilder zu bezeichnen
+		<%
+			ConnectionDB conn = new ConnectionDB();
+			List<String> kategorien = new LinkedList<String>();
+			kategorien = conn.data("SELECT * FROM sozialraum_db.kategorie WHERE id IN(SELECT kat_id from sozialraum_db.kategorie_mapping WHERE parent_id = 1);","name");
+			for(int i = 0; i < kategorien.size(); ++i)
+			{
+				String oberkategorie = kategorien.get(i);
+			//schleife um die Einträge aus der Datenbank zu holen und die Bilder zu bezeichnen
 		%>
 		
 		<div class="col-xs-12 col-sm-4">
-			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
+			 <img src="zeigeKategorieBilder.jsp" name="Sozialraum" width="150" height="150">  
+			<!-- <img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">  -->
 			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="#"><%= oberkategorie%></a></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
-			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="#"><%= oberkategorie%></a></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
-			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="#"><%= oberkategorie%></a></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
-			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="#"><%= oberkategorie%></a></p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			<img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">
-			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="#"><%= oberkategorie%></a></p>
+			<p><a href="showKategorien.jsp?oberkategorie=<%=oberkategorie %>" id=<%=oberkategorie%>><%= oberkategorie%></a></p>
 		</div>
 		<% }%>
 
+	</div>
+	</div>
 	</div>
 	
 	
@@ -123,18 +108,3 @@ img{
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-</body>
-</html>
