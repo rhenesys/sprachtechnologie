@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sozialraumApp</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+	body{
+	padding: 0px;
+	margin: 0px;
+}
+
+.row {
+	margin:0px;
+}
+
+p{
+	padding: 25px;
+	font-size: 2em;
+}
+
+img{
+	border-radius: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
+
+
+	<%  String unterkategorie =  /*mySQL anfrage zu */; %>
+		<div class="container text-center">
+			<h1>SozialraumApp</h1>
+			<h2><%= unterkategorie%></h2>
+		<div>
+		<%
+		
+		String traegername = /*mySQL anfrage zu */;
+		int plz = /*mySQL anfrage zu */;
+		String straßeNr = /*mySQL anfrage zu */;
+		String telefon = /*mySQL anfrage zu */;
+		String fax = /*mySQL anfrage zu */;
+		String ansprechpartner = /*mySQL anfrage zu */;
+		String mailadresse = /*mySQL anfrage zu */;
+		String website= /*mySQL anfrage zu */;
+		String angebot= /*mySQL anfrage zu */;
+
+		while (cond){
+		//schleife um die Einträge aus der Datenbank zu holen 
+		%>
+		
+	<div class="row well text-left">	
+		<div class="col-xs-12">
+			<div class="col-xs-12 col-sm-8">
+				<h4>Träger :</h4>
+				<span><%= traegername%></span>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<h4>Wo:</h4>
+				<span><%= straßeNr%></span>
+				<span><%= plz%></span>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="col-xs-12 col-sm-8">
+				<h4>Beschreibung: </h4>
+				<span><%= angebot%></span>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<h4>Ansprechpartner;</h4>
+				<span><%= ansprechpartner%></span>
+				<span><%= telefon%></span>
+				<span><%= fax%></span>
+				<span><%= mailadresse%></span>
+				<span><%= website%></span>
+			</div>
+		</div>
+		
+
+	</div>
+	<% }%>
+	
+</body>
+</html>
