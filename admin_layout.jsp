@@ -156,10 +156,10 @@
 							  	ConnectionDB con2 = new ConnectionDB();
 								List<String> oberkategorie = new LinkedList<String>();
 								oberkategorie = con.data("SELECT * FROM sozialraum_db.oberkategorie;","oberkategorien");
-								for(String uk : oberkategorie)
+								for(String ok : oberkategorie)
 								{
 							  %>
-							     <option><%= uk %></option>
+							     <option><%= ok %></option>
 							   <%} %>
 							  </select>
 							</div>
@@ -338,7 +338,7 @@
 					<div class="col-sm-4">
 						<button class="btn btn-danger col-xs-12"> Einträge löschen</button>
 					</div>
-					<div class="spacer"></div>
+					<div class="col-xs-12" style="height: 75px;" ></div>
 				</form>
 			</div>
 		</div>
