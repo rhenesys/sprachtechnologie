@@ -49,30 +49,34 @@ img{
 	margin-left: auto;
 	margin-right: auto;
 }
+	#toplevel{
+	margin-top: 60px;
+	}
 </style>
-<nav class="navbar navbar-default " id="scrollMenu">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="index.jsp">Sozialraum</a>
-    </div>
+<nav class="navbar navbar-default navbar-fixed-top"  id="scrollMenu">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" href="index.jsp">Sozialraum</a>
+			</div>
 
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Sozialraum</a></li>
-        <li><a href="#">Angebote</a></li>
-        <li><a href="admin.jsp">Admin</a></li>
-      	<li><a href="impressum.html">Impressum</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="neuhier.html">Neu hier?</a></li>
+					<li><a href="angebote.jsp">Angebote</a></li>
+					<li><a href="feedback.jsp">Feedback</a></li>
+					<li><a href="admin_layout.jsp">Admin</a></li>
+					<li><a href="impressum.html">Impressum</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-	<div class="row">
+	<div class="row" id="toplevel">
 		<div class="container text-center">
 			<h1>SozialraumApp</h1>
 		<div>
@@ -90,7 +94,7 @@ img{
 			 <img src="zeigeKategorieBilder.jsp" name="Sozialraum" width="150" height="150">  
 			<!-- <img src="https://placehold.it/300x300?text=OK" class="img-responsive .img-circle">  -->
 			<!-- href von unterkategorien speisen lassen damit die links funktionieren -->
-			<p><a href="showKategorien.jsp?oberkategorie=<%=oberkategorie %>" id=<%=oberkategorie%>><%= oberkategorie%></a></p>
+			<p><a href="unterkat_index.jsp?oberkategorie=<%=oberkategorie %>" id=<%=oberkategorie%>><%= oberkategorie%></a></p>
 		</div>
 		<% }%>
 
