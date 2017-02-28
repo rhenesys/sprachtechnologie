@@ -232,14 +232,20 @@
 				</div>
 				<div class="col-xs-12 col-sm-6">
 					<div class="col-sm-12">
-						<label style="color:#fff;">Anzeigen</label>
-						<button class="btn btn-success col-xs-12"> Anzeigen</button>
+						<label ">Direkte Suche nach Träger</label><br>
+						<input type="text" class="form-control col-xs-12" name="search" placeholder="Träger eingeben ...">
 					</div>
 				</div>
-				
+				<div  class="col-xs-12" style="height: 25px;"></div>
+				<div class="col-sm-12">
+					<button class="btn btn-success col-xs-12"> Anzeigen</button>
+				</div>
+				<div class="col-xs-12"  style="height: 75px;"></div>		
 				<label class="col-xs-12 text-center" for="sel2">Wähle die zu löschenden Einträge aus</label>
 				
-				<div class="spacer"></div>
+				<div class="col-xs-12"  style="height: 75px;"></div>
+						
+
 						<%
 					
 						String traegername = "/*mySQL anfrage zu */";
