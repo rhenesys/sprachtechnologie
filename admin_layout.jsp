@@ -1,3 +1,4 @@
+<%@page import="javax.xml.ws.ResponseWrapper"%>
 <%@page import="java.util.LinkedList" %>
 
 <%@page import="java.util.List" %>
@@ -207,7 +208,7 @@
 			</div>
 			<!-- auswählen der Kategorie-->
 			<div class="spacer"></div>
-			<form ACTION="traeger_anzeigen.jsp" METHOD="post">
+			<form METHOD="post" name="traeger_form_anzeigen">
 				<div class="col-xs-12 col-sm-6">
 					<div class="col-xs-12">
 						<div class="form-group">
@@ -233,36 +234,51 @@
 				<div class="col-xs-12 col-sm-6">
 					<div class="col-sm-12">
 						<label ">Direkte Suche nach Träger</label><br>
-						<input type="text" class="form-control col-xs-12" name="search" placeholder="Träger eingeben ...">
+						<input type="text" class="form-control col-xs-12" name="search_traeger" placeholder="Träger eingeben ...">
 					</div>
 				</div>
 				<div  class="col-xs-12" style="height: 25px;"></div>
 				<div class="col-sm-12">
-					<button class="btn btn-success col-xs-12"> Anzeigen</button>
+					<button class="btn btn-success col-xs-12" name="traeger_but_anzeigen"> Anzeigen</button>
 				</div>
 				<div class="col-xs-12"  style="height: 75px;"></div>		
 				<label class="col-xs-12 text-center" for="sel2">Wähle die zu löschenden Einträge aus</label>
 				
 				<div class="col-xs-12"  style="height: 75px;"></div>
 						
+<%
+if(request.getParameter("traeger_but_anzeigen") != null)
+{
+	String textFieldSearchCheck = request.getParameter("search_traeger");
+	String searchKategorieTraeger = "";
+	LinkedList<String> geholteDatenTraeger = null;
+	if(textFieldSearchCheck.equals(""))
+	{
+		searchKategorieTraeger = request.getParameter("options_kat_traeger");
+		geholteDatenTraeger = new LinkedList<String>(con.getTraegerData("SELECT * FROM sozialraum_db.traeger WHERE id IN(SELECT traeger_id FROM sozialraum_db.traeger_kat_mapping WHERE traeger_kat_id =(SELECT id FROM sozialraum_db.kategorie WHERE name = '"+searchKategorieTraeger+"'));"));
+	}
+	else
+	{
+		searchKategorieTraeger = textFieldSearchCheck;
+		geholteDatenTraeger = new LinkedList<String>(con.getTraegerData("SELECT * FROM sozialraum_db.traeger WHERE MATCH (angebot) AGAINST ('"+textFieldSearchCheck+"' IN NATURAL LANGUAGE MODE);"));
 
-						<%
-					
-						String traegername = "/*mySQL anfrage zu */";
-						int plz = 12345;
-						String strasse = "/*mySQL anfrage zu */";
-						String nummer = "";
-						String telefon = "/*mySQL anfrage zu */";
-						String fax = "/*mySQL anfrage zu */";
-						String ansprechpartner = "/*mySQL anfrage zu */";
-						String mailadresse = "/*mySQL anfrage zu */";
-						String website= "/*mySQL anfrage zu */";
-						String angebot= "/*mySQL anfrage zu */";
-						while (true){
+	}
+						
+						for(int index = 0; index <= geholteDatenTraeger.size()-9; index += 10){
+							String traegername = geholteDatenTraeger.get(index);
+							String plz = geholteDatenTraeger.get(index+1);
+							String strasse = geholteDatenTraeger.get(index+2);
+							String nummer = geholteDatenTraeger.get(index+3);
+							String telefon = geholteDatenTraeger.get(index+4);
+							String fax = geholteDatenTraeger.get(index+5);
+							String ansprechpartner = geholteDatenTraeger.get(index+6);
+							String mailadresse = geholteDatenTraeger.get(index+7);
+							String website= geholteDatenTraeger.get(index+8);
+							String angebot= geholteDatenTraeger.get(index+9);
 						//schleife um die Einträge aus der Datenbank zu holen 
 						%>
 						<div class="checkbox col-xs-12">
-							<input type="checkbox" value="">
+							<input type="checkbox" name="traegerCheckboxen" value=<%=traegername %>>
 							<div class="row well text-left">	
 								<div class="col-xs-12">
 									<div class="col-xs-12 col-sm-8">
@@ -272,6 +288,7 @@
 									<div class="col-xs-12 col-sm-4">
 										<h4>Wo:</h4>
 										<span><%= strasse%></span>
+										<span><%= nummer %></span>
 										<span><%= plz%></span>
 									</div>
 								</div>
@@ -285,20 +302,20 @@
 										<span><%= ansprechpartner%></span>
 										<span><%= telefon%></span>
 										<span><%= fax%></span>
-										<span><%= mailadresse%></span>
+										<span><%= mailadresse%></span><br />
 										<span><%= website%></span>
 									</div>
 								</div>
 							</div>
 						</div>
 						<%
-							break;}
+							}}
 						%>
-			</form>
+		
 			
 			<!-- auswählen des zu löschenden Beitrags -->
 			<div class="col-xs-12">
-				<form ACTION="traeger_delete.jsp" METHOD="post">
+				
 					<div class="form-group">
 						<div class="spacer"></div>
 						
@@ -307,12 +324,25 @@
 					<div class="spacer"></div>
 					<div class=" col-sm-4"></div>
 					<div class="col-sm-4">
+					<%
+					String[] gecheckteCheckboxen = request.getParameterValues("traegerCheckboxen");
+					List<String> auswahlCheckbox = new LinkedList<String>();
+					if(gecheckteCheckboxen != null)
+					{
+						for(int index = 0; index < gecheckteCheckboxen.length; ++index)
+						{
+							auswahlCheckbox.add(gecheckteCheckboxen[index]);
+						}
+					}
+					con.deleteTraeger(auswahlCheckbox);
+
+					%>
 						<button class="btn btn-danger col-xs-12"> Einträge löschen</button>
 					</div>
 					<div class="col-xs-12" style="height: 75px;" ></div>
 				</form>
 			</div>
 		</div>
-	</div>
+
 </body>
 </html>
