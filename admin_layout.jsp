@@ -52,44 +52,49 @@
 				</h2>
 			</div>
 			<div class="spacer"></div>
-			<form ACTION="" METHOD="">
+			<form ACTION="traeger_hinzufuegen.jsp" METHOD="post" name="traeger">
 				<div class="form-group col-xs-12">
 					<div class="col-xs-12 col-sm-3">
 						<label for="traeger">Veranstalter/Träger:</label>
-						<input type="text" class="form-control" id="traeger">
+						<input type="text" class="form-control" name="traeger">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="straße">Straße:</label>
-						<input type="text" class="form-control" id="straße">
+						<input type="text" class="form-control" name="strasse">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="hausnummer">Hausnummer:</label>
-						<input type="text" class="form-control" id="hausnummer">
+						<input type="text" class="form-control" name="hausnummer">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="plz">Postleitzahl:</label>
-						<input type="text" class="form-control" id="plz">
+						<input type="text" class="form-control" name="plz">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="tel">Telefonnummer:</label>
-						<input type="text" class="form-control" id="tel">
+						<input type="text" class="form-control" name="tel">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="fax">Faxnummer:</label>
-						<input type="text" class="form-control" id="fax">
+						<input type="text" class="form-control" name="fax">
 					</div>
 					<div class="col-xs-12 col-sm-3">
-						<label for="mail">Kontakt e-Mail:</label>
-						<input type="text" class="form-control" id="mail">
+						<label for="mail">E-Mail:</label>
+						<input type="text" class="form-control" name="mail">
 					</div>
 					<div class="col-xs-12 col-sm-3">
 						<label for="website">Webseite:</label>
-						<input type="text" class="form-control" id="website">
+						<input type="text" class="form-control" name="website">
 					</div>
+					<div class="col-xs-12">
+						<label for="ansprechpartner">Ansprechpartner:</label>
+						<input type="text" class="form-control" idname"ansprechpartner">
+					</div>
+				
 					<div class="spacer col-xs-12"></div>
 					<div class="col-xs-12">
 						<label for="beschreibung">Angebotsbeschreibung inkl. Sprache und Zielgruppe (max 700 Zeichen):</label>
-						<textarea class="form-control" maxlength="700" rows="5" id="beschreibung"></textarea>
+						<textarea class="form-control" maxlength="700" rows="5" name="beschreibung"></textarea>
 					</div>
 					<div class="spacer col-xs-12"></div>
 					
@@ -126,7 +131,10 @@
 		</div>
 	</div>
 	<hr>
+	
 <!-- Kategorieverwaltung -->
+
+
 	<div class="row">
 		<div class="container text-center">
 			<h2>Kategorieverwaltung</h2>
@@ -134,7 +142,7 @@
 			<h3 class="col-xs-12"> Kategorie einfügen</h1>
 			
 			<div class="col-xs-12">
-				<form ACTION="" METHOD="">	
+				<form ACTION="oberkategorie_hinzufuegen.jsp" METHOD="post">	
 					<div class="col-xs-12 col-sm-4">
 						<label>Name der neuen Kategorie:</label>
 						<input type="text" class="form-control" id="uk" name="oberkat">
@@ -144,7 +152,6 @@
 							<div class="form-group">
 							  <select class="form-control" id="sel1" name="oberkat_options">
 							  <%
-							  	ConnectionDB con2 = new ConnectionDB();
 								List<String> oberkategorie = new LinkedList<String>();
 								oberkategorie = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
 								for(String ok : oberkategorie)
@@ -170,10 +177,9 @@
 						<div class="form-group">
 						  <select class="form-control" id="sel1" name="oberkat_options">
 						  <%
-						  	ConnectionDB con2 = new ConnectionDB();
-							List<String> oberkategorie = new LinkedList<String>();
-							oberkategorie = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
-							for(String ok : oberkategorie)
+							List<String> oberkategorie_delete = new LinkedList<String>();
+						  	oberkategorie_delete = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
+							for(String ok : oberkategorie_delete)
 							{
 						  %>
 						     <option><%= ok %></option>
@@ -199,16 +205,16 @@
 				</h2>
 				<div class="spacer"></div>
 			</div>
-			<!-- auswählen der Ober- Unterkategorie-->
+			<!-- auswählen der Kategorie-->
 			<div class="spacer"></div>
-			<form ACTION="" METHOD="post">
+			<form ACTION="traeger_anzeigen.jsp" METHOD="post">
 				<div class="col-xs-12 col-sm-6">
-					<div class="col-xs-6 col-xs-offset-3">
+					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="options">
-								Aus folgender Oberkategorie:
+								Aus folgender Kategorie:
 							</label>
-							<select class="form-control" id="sel1" name="options">
+							<select class="form-control" id="sel1" name="options_kat_traeger">
 								<%
 									
 									List<String> oberkategorien = new LinkedList<String>();
@@ -225,44 +231,21 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6">
-					<div class="col-xs-6 col-xs-offset-3">
-						<div class="form-group">
-							<label for="unterkat_options"> und ggf. Unterkategorie:</label>
-							<select class="form-control" id="sel1" name="unterkat_options">
-								<%
-								
-								List<String> unterkategorien_delete = new LinkedList<String>();
-								unterkategorien_delete = con.data("SELECT * FROM sozialraum_db.kategorie;","name");
-								for(String uk : unterkategorien_delete)
-								{
-								%>
-								<option><%= uk %></option>
-								<%} %>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12">
-					<div class="spacer"></div>
-					<div class=" col-sm-4"></div>
-					<div class="col-sm-4">
+					<div class="col-sm-12">
+						<label style="color:#fff;">Anzeigen</label>
 						<button class="btn btn-success col-xs-12"> Anzeigen</button>
 					</div>
 				</div>
 				
-			</form>
-			<!-- auswählen des zu löschenden Beitrags -->
-			<div class="col-xs-12">
-				<form ACTION="" METHOD="">
-					<div class="form-group">
-						<div class="spacer"></div>
-						<label for="sel2">Wähle die zu löschenden Einträge aus</label>
-						<div class="spacer"></div>
+				<label class="col-xs-12 text-center" for="sel2">Wähle die zu löschenden Einträge aus</label>
+				
+				<div class="spacer"></div>
 						<%
-		
+					
 						String traegername = "/*mySQL anfrage zu */";
 						int plz = 12345;
-						String straßeNr = "/*mySQL anfrage zu */";
+						String strasse = "/*mySQL anfrage zu */";
+						String nummer = "";
 						String telefon = "/*mySQL anfrage zu */";
 						String fax = "/*mySQL anfrage zu */";
 						String ansprechpartner = "/*mySQL anfrage zu */";
@@ -277,12 +260,12 @@
 							<div class="row well text-left">	
 								<div class="col-xs-12">
 									<div class="col-xs-12 col-sm-8">
-										<h4>Träger :</h4>
+										<h4>Träger:</h4>
 										<span><%= traegername%></span>
 									</div>
 									<div class="col-xs-12 col-sm-4">
 										<h4>Wo:</h4>
-										<span><%= straßeNr%></span>
+										<span><%= strasse%></span>
 										<span><%= plz%></span>
 									</div>
 								</div>
@@ -292,7 +275,7 @@
 										<span><%= angebot%></span>
 									</div>
 									<div class="col-xs-12 col-sm-4">
-										<h4>Ansprechpartner;</h4>
+										<h4>Ansprechpartner:</h4>
 										<span><%= ansprechpartner%></span>
 										<span><%= telefon%></span>
 										<span><%= fax%></span>
@@ -305,6 +288,15 @@
 						<%
 							break;}
 						%>
+			</form>
+			
+			<!-- auswählen des zu löschenden Beitrags -->
+			<div class="col-xs-12">
+				<form ACTION="traeger_delete.jsp" METHOD="post">
+					<div class="form-group">
+						<div class="spacer"></div>
+						
+						
 
 					<div class="spacer"></div>
 					<div class=" col-sm-4"></div>
