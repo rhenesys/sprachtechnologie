@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>        
+	<title>SozialraumApp Feedback</title>        
+	<meta charset="utf-8">        
+	<meta name="viewport" content="width=device-width, initial-scale=1">        
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">        
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>        
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+	a{
+		text-decoration: none;
+	}
+	a:visited{
+		color: darkblue;
+	}
+</style>
+	<nav class="navbar navbar-default navbar-fixed-top"  id="scrollMenu">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" href="index.jsp">Sozialraum</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="neuhier.html">Neu hier?</a></li>
+					<li><a href="angebote.jsp">Angebote</a></li>
+					<li><a href="feedback.jsp">Feedback</a></li>
+					<li><a href="admin_layout.jsp">Admin</a></li>
+					<li><a href="impressum.html">Impressum</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+		<!-- neuhier Anleitung -->
+		<div class="row" style="padding-top:50px; margin: 0px;">
+			<div class="container">
+				<div class="col-xs-12 headline">
+					<h1 class="text-center col-xs-12">Anleitung für den Admin Bereich?</h1>
+					<h3 class="col-xs-12" style="padding: 0px;">Was für Funktionen stehen für mich als Admin bereit?</h3>
+					<span>
+					Als Admin können Sie verschiedene Operationen durchführen.
+					<br><br>
+					Dazu gehören: <br> 
+					<a href="#eintragErstellen">- Erstellen von neuen Einträgen</a> <br>
+					<a href="#kategorieErstellen">- Erstellen von neuen Kategorien inkl. Bildupload</a> <br> 
+					<a href="#eintragLoeschen">- Löschen von Einträgen</a> <br> 
+					<a href="#kategorieLoeschen">- Löschen von Kategorien </a><br>
+					<a href="#feedbackAuslesen">- Feedback der Nutzer einsehen. </a> 
+					</span>
+				</div>
+				<div class="col-xs-12" id="eintragErstellen" style="padding-top: 50px;">
+					<h3 class="col-xs-12" style="padding: 0px;">Wie erstelle ich einen Eintrag?</h3>
+					<span>
+					Wenn Sie sich als Admin eingeloggt haben, landen Sie auf der Hauptseite des Admin-Bereichs. Hier haben Sie die Möglichkeit unter der Überschrift "Eintrag erstellen" einen neuen Eintrag in die Datenbank vorzunehmen. Dazu füllen Sie einfach die verschiedenen Felder mit Ihren Daten aus. Dabei sollten Sie darauf achten immer einen Träger, eine Straße, eine Hausnummer, eine Postleitzahl, einen Ansprechpartner mit mindestens einer Möglichkeit diesen zu erreichen, sowie eine Beschreibung des Angebots anzugeben. 
+					<br><br>
+					Die Beschreibung sollte die Sprachen beeinhalten, in der die Veranstaltung abgehalten wird und darüber hinaus auch die Zielgruppe enthalten und nicht länger als 700 Zeichen sein. Achten Sie dabei wenn möglich einfache Sprache zu verwenden, da die Suchfunktion dieses Feld nach Schlagwörtern durchsucht. Außerdem ist es notwendig eine Unterkategorie anzugeben, in der der Eintrag erstellt werden soll. <br><br>
+					Durch Betätigung der Schaltfläche "Eintragen" wird die Erstellung des Angebots abgeschlossen. Sollte es keine passende Kategorie für Ihren Eintrag geben, so ist es notwendig zunächst eine neue Kategorie anzulegen. 
+					</span>
+				</div>
+				<div class="col-xs-12" id="kategorieErstellen" style="padding-top: 50px;">
+					<h3 class="col-xs-12" style="padding: 0px;">Wie erstelle ich eine neue Kategorie?</h3>
+					<span>
+					Eine neue Kategorie können Sie unter der Überschrift "Kategorieverwaltung" erstellen. Wir unterscheiden zwischen Ober- und Unterkategorie. Die Oberkategorien werden auf der Startseite angezeigt. Die Unterkategorien erreicht man durch das Anklicken einer Oberkategorie. In einer Unterkategorie werden die verschiedenen Einträge angezeigt. 
+					<br><br>
+					Wenn Sie eine Oberkategorie erstellen möchten, müssen sie unter "Unterkategorie wählen" die Option <strong>Sozialraum</strong> anklicken. <br>
+					Um ein Bild für eine Kategorie festzulegen, klicken sie unter "Bild Upload" auf "Datei auswählen" und suchen in Ihrem Dateisystem das zugehörige Bild aus. Anschließend klicken Sie auf Hinzufügen, um das Erstellen der Oberkategorie abzuschließen.<br>
+					Das Erstellen einer Unterkategorie funktioniert analog dazu, nur dass man anstelle des Sozialraums die zugehörige Oberkategorie auswählen muss. Dieses Vorgehen ist notwendig, da wir auf diese Weise die Datenbank strukturiert haben.
+					</span>
+				</div>
+				<div class="col-xs-12" id="eintragLoeschen" style="padding-top: 50px;">
+					<h3 class="col-xs-12" style="padding: 0px;">Wie lösche ich einen Eintrag?</h3>
+					<span>
+					Unter der Überschrift "Einträge löschen" werden zwei Suchmöglichkeiten angeboten. <br> 
+					Auf der linken Seite ist ein Dropdown-Menü mit dessen Hilfe die Eiträge gefiltert werden können. Dazu wählen Sie eine Kategorie und drücken auf den Button Anzeigen. <br>
+					Auf der rechten Seite gibt es ein Suchfeld, in dem Sie nach einem Träger suchen können. Dazu tippen Sie in das Suchfeld den Namen des Trägers und drücken ebenfalls auf den Button Anzeigen. Halten sie die Suchanfrage möglichst einfach. 
+					<br><br>
+					Nun sollten Sie eine Liste von Einträgen sehen können. Aus dieser können sie beliebig viele Angebote auswählen und löschen. 
+					</span>
+				</div>
+				<div class="col-xs-12" id="kategorieLoeschen" style="padding-top: 50px;">
+					<h3 class="col-xs-12" style="padding: 0px;">Wie lösche ich eine Kategorie?</h3>
+					<span>
+					Sie wählen einfach aus dem Dropdown-Menü die zu löschende Kategorie aus und drücken auf die Schaltfläche "Löschen". 
+					<br><br> 
+					Dabei ist zu beachten, dass die Kategorie "Sozialraum" <strong>niemals</strong> gelöscht werden darf. Außerdem gilt, dass wenn eine Kategorie gelöscht wird, alle Einträge und alle zugehörigen Unterkategorien gelöscht werden. Also stellen Sie stets sicher, dass Sie wirklich alle Einträge einer Kategorie löschen wollen. 
+					</span>
+				</div>
+				<div class="col-xs-12" id="feedbackAuslesen" style="padding-top: 50px; padding-bottom: 50px;">
+					<h3 class="col-xs-12" style="padding: 0px;">Wie kann ich mir die Feedback Nachrichten ansehen?</h3>
+					<span>
+					Durch die Betätigung des "Feedback auslesen"-Buttons in der Menüleiste im Admin-Bereich gelangen Sie zu der "Feedback Ausgabe". Dort können sie für einen von Ihnen bestimmten Zeitraum, die Feedbacks anzeigen lassen. Dazu wählen sie den Monat und das Jahr in dem jeweiligen Dropdown-Menü aus und klicken auf "Anzeigen". <br> Nun sehen Sie die Nachrichten für den angegebenen Zeitraum.
+					</span>
+				</div>
+			</div>	
+		</div>
+		
+	<script type="text/javascript">
+		$(document).ready(function(){
+	// Initialize Tooltip
+	$('[data-toggle="tooltip"]').tooltip(); 
+	
+	// Add smooth scrolling to all links in navbar + headline + footer link
+	$(".headline a").on('click', function(event) {
+
+		// Make sure this.hash has a value before overriding default behavior
+		if (this.hash !== "") {
+
+			// Prevent default anchor click behavior
+			event.preventDefault();
+
+			// Store hash
+			var hash = this.hash;
+
+			// Using jQuery's animate() method to add smooth page scroll
+			// The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+			$('html, body').animate({
+				scrollTop: $(hash).offset().top
+			}, 900, function(){
+	 
+				// Add hash (#) to URL when done scrolling (default click behavior)
+				window.location.hash = hash;
+			});
+		} // End if
+	});
+})
+
+	</script>
+</body>
+</html>
