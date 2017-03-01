@@ -21,3 +21,12 @@ select{
 }
 
 .spacer{min-height: 30px;}
+
+a{
+	text-decoration: none;
+}
+
+
+a:visited{
+	color: darkblue;
+}
