@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+ <!--Defines Security Constraint -->
+    <security-constraint>
+        <display-name>Login</display-name>
+        <web-resource-collection>
+            <web-resource-name>Adminbereich</web-resource-name>
+            <description/>
+            <url-pattern>/feedback.jsp</url-pattern>
+            <url-pattern>/admin_layout.jsp</url-pattern>
+            <url-pattern>/ableitung_admin.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>sozialraum</role-name>
+        </auth-constraint>
+    </security-constraint>
+<!--Defines Login Config -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/login.html</form-login-page>
+            <form-error-page>/error.html</form-error-page>
+        </form-login-config>
+    </login-config>
+<!--Defines Security Role -->
+    <security-role>
+        <description/>
+        <role-name>sozialraum</role-name>
+    </security-role>
+</web-app>
